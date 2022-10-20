@@ -1,4 +1,4 @@
-# Math in a Flash
+# artFolio
 
 ## Date: 10/20/2022
 
@@ -42,11 +42,11 @@
 
 ##### ERD
 
-![ERD](/artFolio/ERD)
+![Entity Relationship Diagram](/artFolio/ERD)
 
-##### image header 2
+#####
 
-![]()
+![Component Hierarcy Diagram](/artFolio/CHD)
 
 ---
 
