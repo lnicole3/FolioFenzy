@@ -40,13 +40,13 @@
 
 ### **_Screenshots_**
 
-##### ERD
+##### Entity Relationship Diagram
 
-![Entity Relationship Diagram](/artFolio/ERD)
+![Entity Relationship Diagram](/images/ERD.png)
 
-#####
+##### Component Hierarcy Diagram
 
-![Component Hierarcy Diagram](/artFolio/CHD)
+![Component Hierarcy Diagram](/images/CHD.png)
 
 ---
 
