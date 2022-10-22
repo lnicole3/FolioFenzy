@@ -1,7 +1,7 @@
 const express = require('express')
 const PORT = process.env.PORT || 3001
 const db = require('./db')
-const { Artist } = require('./models')
+const { Artist, Artwork } = require('./models')
 
 const app = express()
 
@@ -12,16 +12,30 @@ app.get('/', (req, res) => {
   res.send({ msg: 'working' })
 })
 
-//Artist routes
-
-//New Artist route
+//Create New Artist route
 app.post('/artists', (req, res) => {
   res.send('artist route')
 })
 
+//Read all artists
+app.get('/artists', async (req, res) => {
+  let allArtists = await Artist.find({})
+  res.json(allArtists)
+})
+
+//Update Artist info
+
+//Delete Artist info
+
 //Create Artwork
-app.post('/artwork', (req, res) => {
-  res.send('artwork route')
+app.post('/artworks', (req, res) => {
+  res.send('artist route')
+})
+
+//Read all Artwork
+app.get('/artworks', async (req, res) => {
+  const artworks = await Artwork.find({})
+  res.json(artworks)
 })
 
 app.listen(PORT, () => {
