@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
-import LoginButton from './LoginButton'
-import LogoutButton from './LogoutButton'
 
 
 const Artworks = (props) => {

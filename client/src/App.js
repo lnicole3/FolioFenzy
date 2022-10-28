@@ -6,8 +6,6 @@ import Home from './components/Home'
 import ArtistDashboard from './components/ArtistDashboard'
 import Artists from './components/Artists'
 import Artworks from './components/Artworks'
-import LoginButton from './components/LoginButton'
-import LogoutButton from './components/LogoutButton'
 import Gallery from './components/Gallery'
 import OneArtwork from './components/OneArtwork'
 
