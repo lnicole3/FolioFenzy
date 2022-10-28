@@ -1,12 +1,13 @@
-import Artworks from "./Gallery"
+import Artworks from "./Artworks"
 
 const ArtistDashboard = (props) => {
-    console.log(props)
+
+
     return( 
         <div>
-    <h3>Artist Dashboard</h3>
-    <Artworks />
-    <h2>Welcome </h2>
+    <h3>Artist Dashboard </h3>
+    <Artworks  />
+    
 
     </div>
     )

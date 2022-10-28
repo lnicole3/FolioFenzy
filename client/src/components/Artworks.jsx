@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Artworks = () => {
-  const [artworks, updateArtworks] = useState([])
+  const [artworks, setArtworks] = useState([])
   const [formState, setFormState] = useState({
     title: '',
     medium: '',
@@ -12,11 +13,11 @@ const Artworks = () => {
     created: ''
   })
 
+  const apiCall = async () => {
+    let response = await axios.get('http://localhost:3001/artworks')
+    setArtworks(response.data)
+  }
   useEffect(() => {
-    const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/artworks')
-      updateArtworks(response.data)
-    }
     apiCall()
   }, [])
 
@@ -35,7 +36,7 @@ const Artworks = () => {
         console.log(error)
       })
 
-    updateArtworks([...artworks, newArtwork.data])
+    setArtworks([...artworks, newArtwork.data])
     setFormState({
       title: '',
       medium: '',
@@ -45,12 +46,24 @@ const Artworks = () => {
       created: ''
     })
   }
+  const deleteArtwork = async (artworkId) => {
+    try {
+      await axios.delete(`http://localhost:3001/artworks/${artworkId}`,artworkId)
+      apiCall()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="Artworks">
       {artworks.map((artwork) => (
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>
           <img src={artwork.image} />
+          <Link to='/artworks/:id'>Edit</Link>
+          <button onClick={()=>{deleteArtwork(artwork._id)}}>Delete</button>
+
         </div>
       ))}
       <h3>Add an artwork to your Artfolio</h3>

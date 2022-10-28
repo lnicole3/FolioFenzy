@@ -47,6 +47,7 @@ const Artworks = () => {
   }
   return (
     <div className="Artworks">
+      hello
       {artworks.map((artwork) => (
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>

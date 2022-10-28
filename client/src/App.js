@@ -9,6 +9,7 @@ import Artworks from './components/Artworks'
 import LoginButton from './components/LoginButton'
 import LogoutButton from './components/LogoutButton'
 import Gallery from './components/Gallery'
+import OneArtwork from './components/OneArtwork'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/artists/:id" element={<ArtistDashboard />} />
         <Route path="/artworks" element={<Artworks />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/artworks/:id" element={<OneArtwork />} />
       </Routes>
     </div>
   )
