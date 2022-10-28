@@ -15,10 +15,13 @@ app.use(express.urlencoded({ extended: false }))
 
 //Routes
 app.get('/', (req, res) => {
-  res.send({ msg: 'working' })
+  res.send({ msg: 'home' })
 })
 
-//Create New Artist route
+//artist login
+app.get('/artist')
+
+//Create New Artist
 app.post('/artists', async (req, res) => {
   let createArtist = new Artist(req.body)
   await createArtist.save()
@@ -29,6 +32,18 @@ app.post('/artists', async (req, res) => {
 app.get('/artists', async (req, res) => {
   let allArtists = await Artist.find({})
   res.json(allArtists)
+})
+
+//Read One artist
+app.get('/artists/:id', async (req, res) => {
+  let artist = await Artist.findById(req.params.id)
+  res.json(artist)
+})
+
+app.get('/artists/:id/artworks', async (req, res) => {
+  console.log(req.params.id)
+  let artworkbyArtist = await Artwork.find({ artist_id: req.params.id })
+  res.json(artworkbyArtist)
 })
 
 //Update Artist Info
@@ -55,6 +70,19 @@ app.post('/artworks', async (req, res) => {
 
 //Read all Artwork
 app.get('/artworks', async (req, res) => {
+  let allArtwork = await Artwork.find({})
+  res.json(allArtwork)
+})
+
+//Read one Artwork
+app.get('/artworks/:id', async (req, res) => {
+  let oneArtwork = await Artwork.findById(req.params.id)
+  console.log(oneArtwork)
+  res.json(oneArtwork)
+})
+
+//Read all Artworks for all artists
+app.get('/gallery', async (req, res) => {
   let allArtwork = await Artwork.find({})
   res.json(allArtwork)
 })

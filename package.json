@@ -4,7 +4,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.6.7",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "react-router-dom": "^6.4.2"
   },
   "name": "artfolio",
   "description": "## Date: 10/20/2022",
