@@ -1,6 +1,61 @@
+@media (min-width:768px){
 
+.container {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  color:white;
+  grid-template: 1fr 5fr 1fr / 1fr 4fr;
+  gap: 10px;
+  grid-template-areas:
+  "logo header"
+  "nav content"
+  "footer footer"
+}
+.logo{
+
+grid-area: logo ;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.header{
+
+grid-area: header;
+}
+.nav{
+grid-area: nav;
+}
+.content{
+
+ grid-area: content;
+}
+.footer{
+
+ grid-area: footer;
+}
+
+.Artworks{
+  display:flex;
+  width: 90%;
+  margin: 0 auto;
+
+}
+.thumbnail{
+  display:block;
+  flex-basis: 100%;
+
+}
 
 img {
-  height: 200px;
-  width: 200px;
+  height: auto;
+  max-width: 100%;
+  display: inline-block
+}
+
+p{
+  color: white
+}
 }

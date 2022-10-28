@@ -57,12 +57,13 @@ const Artworks = () => {
 
   return (
     <div className="Artworks">
+      
       {artworks.map((artwork) => (
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>
-          <img src={artwork.image} />
-          <h3>{artwork.description}</h3>
-          <h3>{artwork.artist}</h3>
+          <img className="thumbnail" src={artwork.image} />
+          <p>{artwork.description}</p>
+          <p>{artwork.artist}</p>
           <Link to={`/artworks/${artwork._id}`}>Edit</Link>
           <button onClick={()=>{deleteArtwork(artwork._id)}}>Delete</button>
 
