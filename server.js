@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(`${__dirname}/client/build`))
 
 //Routes
 app.get('/', (req, res) => {
@@ -102,6 +103,11 @@ app.delete('/artworks/:id', async (req, res) => {
   let deletedArtwork = await Artwork.findByIdAndDelete(req.params.id)
   res.json(deletedArtwork)
 })
+
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`)
+})
+
 app.listen(PORT, () => {
   console.log(`Express server listening ${PORT}`)
 })
