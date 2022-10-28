@@ -61,7 +61,9 @@ const Artworks = () => {
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>
           <img src={artwork.image} />
-          <Link to='/artworks/:id'>Edit</Link>
+          <h3>{artwork.description}</h3>
+          <h3>{artwork.artist}</h3>
+          <Link to={`/artworks/${artwork._id}`}>Edit</Link>
           <button onClick={()=>{deleteArtwork(artwork._id)}}>Delete</button>
 
         </div>
@@ -88,6 +90,8 @@ const Artworks = () => {
         <input id="image" value={formState.image} onChange={handleChange} />
         <label htmlFor="created">Year Created(YYYY):</label>
         <input id="created" value={formState.created} onChange={handleChange} />
+        <label htmlFor="artist">Artist Name:</label>
+        <input id="artist" value={formState.artist} onChange={handleChange} />
 
         <button type="submit">Add Artwork</button>
       </form>

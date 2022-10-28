@@ -1,78 +1,99 @@
-import React from 'react'
+
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useParams, useNavigate } from 'react-router-dom'
 
 
-
-export const OneArtwork = (props) => {
-
-  const [ updateArtwork, setArtwork ] = useState()
+const OneArtwork = ()=> {
+  let navigate = useNavigate()
+  const [editArtwork, setEditArtwork] = useState([])
   const [formState, setFormState] = useState({
     title: '',
     medium: '',
     dimensions: '',
     description: '',
     image: '',
-    created: ''
+    created: '',
+    artist:'',
+    artist_id: ''
   })
-  const apiCall = async () => {
-    let response = await axios.get('http://localhost:3001/artworks/:id')
-    setArtwork(response.data)
+useEffect(() => {
+  const getOneArtwork =  async () => {
+   const res = await axios.get(`http://localhost:3001/artworks/${id}`)
+  setFormState({
+    title: res.data.title,
+    medium: res.data.medium,
+    dimensions: res.data.dimensions,
+    description: res.data.description,
+    image: res.data.image,
+    created: '',
+    artist: res.data.artist,
+    artist_id: res.data.artist_id
+  })
   }
-  useEffect(() => {
-    apiCall()
-  }, [])
+  getOneArtwork()
+}, [])
 
+  let { id } = useParams()
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let updateArtwork = await axios
-    .put ('http://localhost:3001/artworks/:id', formState)
-    .then((response) => {
-      return response
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-      setArtwork([...updateArtwork, setArtwork.data])
-      setFormState({
-        title: '',
-        medium: '',
-        dimensions: '',
-        description: '',
-        image: '',
-        created: ''
+    let newArtwork = await axios
+      .put(`http://localhost:3001/artworks/${id}`, formState)
+      .then((response) => {
+        navigate( '/artworks')
       })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+  useEffect(() => {
+    const editArtwork = async () => {
+      try {
+        let res = await axios.put(`http://localhost:3001/artworks/:id`)
+        console.log(res.data)
+        editArtwork(res.data)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    setEditArtwork()
+  }, [])
 
   return (
-    <div>Artwork Name: 
-    <label htmlFor="title">Title:</label>
-    <input id="title" value={formState.title} onChange={handleChange} />
-    <label htmlFor="medium">Medium:</label>
-    <input id="medium" value={formState.medium} onChange={handleChange} />
-    <label htmlFor="dimensions">Dimensions:</label>
-    <input
-      id="dimensions"
-      value={formState.dimensions}
-      onChange={handleChange}
-    />
-    <label htmlFor="description">Description:</label>
-    <input
-      id="description"
-      value={formState.description}
-      onChange={handleChange}
-    />
-    <label htmlFor="image">Link:</label>
-    <input id="image" value={formState.image} onChange={handleChange} />
-    <label htmlFor="created">Year Created(YYYY):</label>
-    <input id="created" value={formState.created} onChange={handleChange} />
+    <div className="App">
+      <h1>Update Artwork:</h1>
+      <form onSubmit={handleSubmit}>
+      <label htmlFor="title">Title:</label>
+        <input id="title" value={formState.title} onChange={handleChange} />
+        <label htmlFor="medium">Medium:</label>
+        <input id="medium" value={formState.medium} onChange={handleChange} />
+        <label htmlFor="dimensions">Dimensions:</label>
+        <input
+          id="dimensions"
+          value={formState.dimensions}
+          onChange={handleChange}
+        />
+        <label htmlFor="description">Description:</label>
+        <input
+          id="description"
+          value={formState.description}
+          onChange={handleChange}
+        />
+        <label htmlFor="image">Link:</label>
+        <input id="image" value={formState.image} onChange={handleChange} />
+        <label htmlFor="created">Year Created(YYYY):</label>
+        <input id="created" value={formState.created} onChange={handleChange} />
+        <button type="submit">Update Artwork</button>
+      
+      </form>
+    
+    
+    </div>
+  );
+}
 
-    <button type="submit">Add Artwork</button>
- </div>
-  )
-}
-}
 export default OneArtwork
