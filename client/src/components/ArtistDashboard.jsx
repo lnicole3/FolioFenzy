@@ -25,10 +25,7 @@ console.log(props)
 </div>
     ))}
 <Artworks />
-
-    
-//map through the artworks by Id
-    </div>
+ </div>
     )
 }
 

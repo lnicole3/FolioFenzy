@@ -1,10 +1,12 @@
 # artFolio
 
-## Date: 10/20/2022
+## Date: 10/28/2022
 
 ### By: LaShelle Rauseo
 
-#### [Website]() | [GitHub](https://github.com/lnicole3) |
+#### [LinkedIn](www.linkedin.com/in/lashelle-rauseo)
+
+) | [GitHub](https://github.com/lnicole3) |
 
 ---
 
@@ -28,17 +30,19 @@
 
 ### **_Getting Started_**
 
-#####
+##### Add yourself as an artist and start adding your artworks to your specific artFolio. At this time, you must utilize an image website like imgur.com to upload your artwork, so that you may add it by a link.
 
 ### **_Resources_**
 
 ##### A Trello board was used to keep track of development progress and can be viewed [here](https://trello.com/b/7btW34W5/artfolio).
 
-##### The project itself was deployed and can be viewed [here]().
+##### The project itself was deployed and can be viewed at [Heroku](https://theartfolio.herokuapp.com/).
 
 ---
 
-### **_Screenshots_**
+### **_Screenshot_**
+
+![Screenshot](/images/artfolioss.png)
 
 ##### Entity Relationship Diagram
 
@@ -52,7 +56,7 @@
 
 ### **_Credits_**
 
-##### Images: [Google Search](www.google.com/images)
+##### Images: [Google Search](www.google.com/images), [Imgur](www.imgur.com)
 
 ##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
 

@@ -66,6 +66,7 @@ const Artworks = () => {
           <h2>"{artwork.title}"</h2>
           <img src={artwork.image} />
           <p>Description:{artwork.description}</p>
+          <p>Medium: {artwork.medium}</p>
           <p>Artist:{artwork.artist}</p>
           <Link to={`/artworks/${artwork._id}`}>Edit</Link>
           <button onClick={()=>{deleteArtwork(artwork._id)}}>Delete</button>
