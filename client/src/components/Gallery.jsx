@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Artworks = () => {
+const Gallery = () => {
   const [artworks, updateArtworks] = useState([])
   const [formState, setFormState] = useState({
     title: '',
@@ -47,7 +47,7 @@ const Artworks = () => {
   }
   return (
     <div className="Artworks">
-      hello
+      
       {artworks.map((artwork) => (
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>
@@ -83,4 +83,4 @@ const Artworks = () => {
   )
 }
 
-export default Artworks
+export default Gallery

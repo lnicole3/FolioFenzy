@@ -21,6 +21,9 @@ const Artworks = () => {
     apiCall()
   }, [])
 
+
+
+
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
   }
@@ -56,14 +59,14 @@ const Artworks = () => {
   }
 
   return (
-    <div className="Artworks">
+    <div className="art-grid">
       
       {artworks.map((artwork) => (
-        <div key={artwork._id}>
-          <h2>{artwork.title}</h2>
-          <img className="thumbnail" src={artwork.image} />
-          <p>{artwork.description}</p>
-          <p>{artwork.artist}</p>
+        <div className="art-card"key={artwork.artist_id}>
+          <h2>"{artwork.title}"</h2>
+          <img src={artwork.image} />
+          <p>Description:{artwork.description}</p>
+          <p>Artist:{artwork.artist}</p>
           <Link to={`/artworks/${artwork._id}`}>Edit</Link>
           <button onClick={()=>{deleteArtwork(artwork._id)}}>Delete</button>
 

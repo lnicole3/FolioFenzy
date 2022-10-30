@@ -41,6 +41,7 @@ app.get('/artists/:id', async (req, res) => {
   res.json(artist)
 })
 
+//Read Art by one artist
 app.get('/artists/:id/artworks', async (req, res) => {
   console.log(req.params.id)
   let artworkbyArtist = await Artwork.find({ artist_id: req.params.id })
