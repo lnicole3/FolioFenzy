@@ -51,7 +51,7 @@ const Gallery = () => {
       {artworks.map((artwork) => (
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>
-          <img src={artwork.image} />
+          <img src={artwork.image} alt ="artwork image" />
         </div>
       ))}
       <h3>Add an artwork to your Artfolio</h3>

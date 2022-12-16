@@ -64,7 +64,7 @@ const Artworks = () => {
       {artworks.map((artwork) => (
         <div className="art-card"key={artwork.artist_id}>
           <h2>"{artwork.title}"</h2>
-          <img src={artwork.image} />
+          <img src={artwork.image} alt="artwork image"/>
           <p>Description:{artwork.description}</p>
           <p>Medium: {artwork.medium}</p>
           <p>Artist:{artwork.artist}</p>

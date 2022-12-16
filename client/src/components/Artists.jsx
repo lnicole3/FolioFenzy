@@ -14,7 +14,7 @@ const Artworks = (props) => {
     email: '',
   })
 
-  let { id } = useParams() 
+
 
   useEffect(() => {
     const apiCall = async () => {
