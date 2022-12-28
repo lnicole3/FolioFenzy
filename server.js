@@ -1,9 +1,11 @@
 const express = require('express')
-const PORT = process.env.PORT || 3001
 const db = require('./db')
 const { Artist, Artwork } = require('./models')
 const cors = require('cors')
 const logger = require('morgan')
+const routes = require('./routes')
+
+const PORT = process.env.PORT || 3001
 
 const app = express()
 
@@ -12,6 +14,10 @@ app.use(express.json())
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.static(`${__dirname}/client/build`))
+
+app.use('/api', routes)
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 //Routes
 

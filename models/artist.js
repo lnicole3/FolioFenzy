@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const Artist = new Schema({
+const artistSchema = new Schema({
   artist: { type: String, required: true },
   artist_id: { type: Schema.Types.ObjectId },
   city: { type: String, required: true },
@@ -10,4 +10,4 @@ const Artist = new Schema({
   email: { type: String, required: true }
 })
 
-module.exports = mongoose.model('Artist', Artist)
+module.exports = artistSchema
