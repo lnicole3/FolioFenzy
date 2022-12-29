@@ -22,20 +22,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 //Routes
 
 //artist login
-app.get('/artist')
-
-//Create New Artist
-app.post('/artists', async (req, res) => {
-  let createArtist = new Artist(req.body)
-  await createArtist.save()
-  res.json(createArtist)
-})
-
-//Read all artists
-app.get('/artists', async (req, res) => {
-  let allArtists = await Artist.find({})
-  res.json(allArtists)
-})
+// app.get('/artists')
 
 //Read One artist
 app.get('/artists/:id', async (req, res) => {
@@ -48,14 +35,6 @@ app.get('/artists/:id/artworks', async (req, res) => {
   console.log(req.params.id)
   let artworkbyArtist = await Artwork.find({ artist_id: req.params.id })
   res.json(artworkbyArtist)
-})
-
-//Update Artist Info
-app.put('/artists/:id', async (req, res) => {
-  let updatedArtist = await Artist.findByIdAndUpdate(req.params.id, req.body, {
-    new: true
-  })
-  res.json(updatedArtist)
 })
 
 //Delete Artist
@@ -107,9 +86,9 @@ app.delete('/artworks/:id', async (req, res) => {
   res.json(deletedArtwork)
 })
 
-app.get('/*', (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`)
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(`${__dirname}/client/build/index.html`)
+// })
 
 app.listen(PORT, () => {
   console.log(`Express server listening ${PORT}`)

@@ -10,4 +10,4 @@ const artistSchema = new Schema({
   email: { type: String, required: true }
 })
 
-module.exports = artistSchema
+module.exports = mongoose.model('Artist', artistSchema)

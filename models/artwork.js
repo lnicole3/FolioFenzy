@@ -14,5 +14,4 @@ const artworkSchema = new Schema(
   },
   { timestamps: true }
 )
-
-module.exports = artworkSchema
+module.exports = mongoose.model('Artwork', artworkSchema)
