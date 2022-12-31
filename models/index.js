@@ -1,11 +1,11 @@
-const model = require('mongoose')
-const artistSchema = require('./artist')
-const artworkSchema = require('./artwork')
+// const mongoose = require('mongoose')
+// const artistSchema = require('./artist')
+// const artworkSchema = require('./artwork')
 
-const Artist = model('Artist', artistSchema)
-const Artwork = model('Artwork', artworkSchema)
+// const Artist = mongoose.model('Artist', artistSchema)
+// const Artwork = mongoose.model('Artwork', artworkSchema)
 
-module.exports = {
-  Artist,
-  Artwork
-}
+// module.exports = {
+//   Artist,
+//   Artwork
+// }
