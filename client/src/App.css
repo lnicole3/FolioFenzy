@@ -1,19 +1,23 @@
 @media (min-width:768px){
-
+html{
+  color:white
+}
 body{
   font-family: 'Voltaire', sans-serif;
   color: white;
   background-color: black;
 }
-.container {
+
+.container{
   display: flex;
   flex-direction: column;
   background-color: black;
   align-items: center;
- color:black;
+ color:white;
+ font-size: 25px;
  height: 100vh;
  justify-content: center;
-
+margin:20px auto;
 }
 
 .logo{
@@ -21,7 +25,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-width: 80%;
+width: 100%;
 height:750px;
 color:black;
 }
@@ -36,24 +40,30 @@ color:black;
 .nav{
 color: white;
 display: flex;
-flex-direction: row;
+flex-direction: column;
 justify-content: space-evenly;
 width: 100%;
 height: 100px;
-font-size: 75px;
+font-size: 55px;
+}
+.App{
+  height: 30px;
+}
+.nav-links{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
 
 }
-
 .content{
-
- grid-area: content;
  display: flex;
  flex-wrap: wrap;
-}
-.footer{
+ height: 70vh;
 
- grid-area: footer;
+ padding: 150px;
+ margin: 250px;
 }
+
 
 
 .listings {
@@ -100,11 +110,53 @@ font-size: 75px;
 p{
   color: white
 }
+.artist-container{
+  display: flex;
+  flex-direction: row;
 
+}
 .Artists {
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 30px;
+  margin: 20px;
+  padding: 20px;
+
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 300px;
+  text-align: center;
 }
 
+.artist-form{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+h3{
+
+}
+
+input {
+  width:100%;
+  height: 60px;
+}
 .Artworks {
-  color:white
+  color:white;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+
+}
+
+.artist-dashboard {
+  margin:20px;
 }

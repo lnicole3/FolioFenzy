@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { BASE_URL } from '../globals'
 
-const Artworks = ({artwork, apiCall}) => {
+const Artworks = ({artwork, apiCall, artist_id}) => {
   const [artworks, setArtworks] = useState([])
   const [formState, setFormState] = useState({
     title: '',
@@ -11,7 +11,9 @@ const Artworks = ({artwork, apiCall}) => {
     dimensions: '',
     description: '',
     image: '',
-    created: ''
+    created: '',
+    artist_id,
+    artist: ''
   })
 
   // const apiCall = async () => {
@@ -48,8 +50,11 @@ const Artworks = ({artwork, apiCall}) => {
       dimensions: '',
       description: '',
       image: '',
-      created: ''
+      created: '',
+      artist_id,
+      artist: ''
     })
+    apiCall()
   }
   const deleteArtwork = async (artworkId) => {
     try {
@@ -59,6 +64,7 @@ const Artworks = ({artwork, apiCall}) => {
       console.log(error)
     }
   }
+
 
   return (
     <div className="art-grid">

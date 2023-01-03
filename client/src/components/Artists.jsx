@@ -48,17 +48,17 @@ const Artists = (props) => {
   }
 
 return (
-    
+    <div className='artist-container'>
     <div className="Artists">
       <h3>Resident Artists:</h3>
       {artists?.map((artist) => (
         <div key={artist._id}>
-          <Link to={`/artists/${artist._id}`} key={artist._id}>{artist.artist}</Link>
-         
-      
+          <ul className='Artists'><Link to={`/artists/${artist._id}`} key={artist._id}>{artist.artist}</Link></ul>
         </div>
       ))}
-      <h3>Do you want to join ArtFolio.  Enter your information below.</h3>
+      </div>
+      <div className='artist-form'>
+      <h3>Do you want to join ArtFolio?  Enter your information below.</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="artist">Artist Name:</label>
         <input id="artist" value={formState.artist} onChange={handleChange} />
@@ -81,6 +81,7 @@ return (
 
         <button type="submit">Add Artist</button>
       </form>
+      </div>
     </div>
 )
 }

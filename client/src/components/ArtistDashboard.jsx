@@ -22,8 +22,9 @@ useEffect(() => {
 
     return( 
     <div className="artist-dashboard">
-    <h3>Artist Dashboard </h3>
-    <Artworks artwork={artworks} apiCall={apiCall}/>
+    <h3 key={artworks._id} >Artist Dashboard:{artworks.artist}</h3>
+  
+    <Artworks artwork={artworks} apiCall={apiCall} artist_id={id}/>
 </div>
     )}
 
