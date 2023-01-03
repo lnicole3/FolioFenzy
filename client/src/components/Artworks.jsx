@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { BASE_URL } from '../globals'
 
-const Artworks = () => {
+const Artworks = ({artwork, apiCall}) => {
   const [artworks, setArtworks] = useState([])
   const [formState, setFormState] = useState({
     title: '',
@@ -13,15 +14,14 @@ const Artworks = () => {
     created: ''
   })
 
-  const apiCall = async () => {
-    let response = await axios.get('http://localhost:3001/artworks')
-    setArtworks(response.data)
-  }
-  useEffect(() => {
-    apiCall()
-  }, [])
-
-
+  // const apiCall = async () => {
+  //   let response = await axios.get(`${BASE_URL}/api/artworks`)
+  //   setArtworks(response.data)
+  //   console.log(response.data)
+  // }
+  // useEffect(() => {
+  //   apiCall()
+  // }, [])
 
 
   const handleChange = (event) => {
@@ -30,8 +30,9 @@ const Artworks = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    console.log(formState)
     let newArtwork = await axios
-      .post('http://localhost:3001/artworks', formState)
+      .post(`${BASE_URL}/api/artworks`, formState)
       .then((response) => {
         return response
       })
@@ -39,6 +40,7 @@ const Artworks = () => {
         console.log(error)
       })
 
+      console.log(newArtwork.data)
     setArtworks([...artworks, newArtwork.data])
     setFormState({
       title: '',
@@ -51,7 +53,7 @@ const Artworks = () => {
   }
   const deleteArtwork = async (artworkId) => {
     try {
-      await axios.delete(`http://localhost:3001/artworks/${artworkId}`,artworkId)
+      await axios.delete(`${BASE_URL}/api/artworks/${artworkId}`)
       apiCall()
     } catch (error) {
       console.log(error)
@@ -61,8 +63,8 @@ const Artworks = () => {
   return (
     <div className="art-grid">
       
-      {artworks.map((artwork) => (
-        <div className="art-card"key={artwork.artist_id}>
+      {artwork?.map((artwork) => (
+        <div className="art-card"key={artwork._id}>
           <h2>"{artwork.title}"</h2>
           <img src={artwork.image} alt="artwork image"/>
           <p>Description:{artwork.description}</p>

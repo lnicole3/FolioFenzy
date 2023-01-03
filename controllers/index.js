@@ -83,6 +83,7 @@ const createArtwork = async (req, res) => {
 const getAllArtworks = async (req, res) => {
   try {
     const artworks = await Artwork.find()
+
     return res.status(200).json({ artworks })
   } catch (error) {
     return res.status(500).send(error.message)

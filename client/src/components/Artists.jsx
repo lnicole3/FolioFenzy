@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { BASE_URL } from '../globals'
 
-
-const Artworks = (props) => {
-
+const Artists = (props) => {
   const [artists, updateArtists] = useState([])
   const [formState, setFormState] = useState({
     artist: '',
@@ -13,15 +12,14 @@ const Artworks = (props) => {
     bio: '',
     email: '',
   })
+  const getArtists = async () => {
+    let response = await axios.get(`${BASE_URL}/api/artists`)
+    updateArtists(response.data.artists)
 
-
-
+  }
   useEffect(() => {
-    const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/artists')
-      updateArtists(response.data)
-    }
-    apiCall()
+
+    getArtists()
   }, [])
 
   const handleChange = (event) => {
@@ -31,7 +29,7 @@ const Artworks = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     let newArtist= await axios
-      .post('http://localhost:3001/artists', formState)
+      .post(`${BASE_URL}/api/artists`, formState)
       .then((response) => {
         return response
       })
@@ -53,9 +51,9 @@ return (
     
     <div className="Artists">
       <h3>Resident Artists:</h3>
-      {artists.map((artist) => (
+      {artists?.map((artist) => (
         <div key={artist._id}>
-          <Link to={`/artists/${artist._id}`}>{artist.artist}</Link>
+          <Link to={`/artists/${artist._id}`} key={artist._id}>{artist.artist}</Link>
          
       
         </div>
@@ -87,4 +85,4 @@ return (
 )
 }
 
-export default Artworks
+export default Artists

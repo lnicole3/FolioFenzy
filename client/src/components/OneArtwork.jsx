@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
-
+import { BASE_URL } from '../globals'
 
 const OneArtwork = ()=> {
   let navigate = useNavigate()
+  let { id } = useParams()
+
   const [editArtwork, setEditArtwork] = useState([])
   const [formState, setFormState] = useState({
     title: '',
@@ -19,22 +21,24 @@ const OneArtwork = ()=> {
   })
 useEffect(() => {
   const getOneArtwork =  async () => {
-   const res = await axios.get(`http://localhost:3001/artworks/${id}`)
+   const res = await axios.get(`${BASE_URL}/api/artworks/${id}`)
+   console.log(res.data.artwork)
   setFormState({
-    title: res.data.title,
-    medium: res.data.medium,
-    dimensions: res.data.dimensions,
-    description: res.data.description,
-    image: res.data.image,
-    created: '',
-    artist: res.data.artist,
-    artist_id: res.data.artist_id
+    ...formState, ...res.data.artwork
+    // title: res.data.title,
+    // medium: res.data.medium,
+    // dimensions: res.data.dimensions,
+    // description: res.data.description,
+    // image: res.data.image,
+    // created: '',
+    // artist: res.data.artist,
+    // artist_id: res.data.artist_id
   })
   }
   getOneArtwork()
 }, [])
 
-  let { id } = useParams()
+
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
   }
@@ -42,18 +46,19 @@ useEffect(() => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     let newArtwork = await axios
-      .put(`http://localhost:3001/artworks/${id}`, formState)
+      .put(`${BASE_URL}/api/artworks/${id}`, formState)
       .then((response) => {
-        navigate( '/artworks')
+        navigate(-1)
       })
       .catch((error) => {
         console.log(error)
       })
+
     }
   useEffect(() => {
     const editArtwork = async () => {
       try {
-        let res = await axios.put(`http://localhost:3001/artworks/:id`)
+        let res = await axios.put(`${BASE_URL}/api/artworks/${id}`)
         console.log(res.data)
         editArtwork(res.data)
       } catch(err) {

@@ -2,6 +2,8 @@
 
 body{
   font-family: 'Voltaire', sans-serif;
+  color: white;
+  background-color: black;
 }
 .container {
   display: flex;
@@ -97,4 +99,12 @@ font-size: 75px;
 
 p{
   color: white
+}
+
+.Artists {
+  color: white;
+}
+
+.Artworks {
+  color:white
 }

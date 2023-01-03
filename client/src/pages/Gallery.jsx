@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BASE_URL } from '../globals'
 
 const Gallery = () => {
   const [artworks, updateArtworks] = useState([])
@@ -11,12 +12,13 @@ const Gallery = () => {
     image: '',
     created: ''
   })
-
+  const apiCall = async () => {
+    let response = await axios.get(`${BASE_URL}/api/artworks`)
+    updateArtworks(response.data.artworks)
+    console.log(response.data.artworks)
+  }
   useEffect(() => {
-    const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/gallery')
-      updateArtworks(response.data)
-    }
+   
     apiCall()
   }, [])
 
@@ -27,7 +29,7 @@ const Gallery = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     let newArtwork = await axios
-      .post('http://localhost:3001/gallery', formState)
+      .post(`${BASE_URL}/api/artworks`, formState)
       .then((response) => {
         return response
       })
@@ -47,8 +49,8 @@ const Gallery = () => {
   }
   return (
     <div className="Artworks">
-      
-      {artworks.map((artwork) => (
+      <h3>Gallery</h3>
+      {artworks?.map((artwork) => (
         <div key={artwork._id}>
           <h2>{artwork.title}</h2>
           <img src={artwork.image} alt ="artwork image" />

@@ -10,6 +10,7 @@ router.get('/artists/:id', controllers.getArtistById)
 router.put('/artists/:id', controllers.updateArtist)
 router.delete('/artists/:id', controllers.deleteArtist)
 
+router.post('/artworks', controllers.createArtwork)
 router.get('/artworks', controllers.getAllArtworks)
 router.get('/artworks/:id', controllers.getArtworkById)
 router.get('/artists/:id/artworks', controllers.getArtByArtist)
